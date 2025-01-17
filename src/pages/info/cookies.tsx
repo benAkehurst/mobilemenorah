@@ -1,6 +1,6 @@
-import Head from "next/head";
-import { appConfig } from "../../../app.config";
-import Link from "next/link";
+import Head from 'next/head';
+import { appConfig } from '../../../app.config';
+import Link from 'next/link';
 
 const Cookies = () => {
   return (
@@ -21,7 +21,7 @@ const Cookies = () => {
           <strong>Vercel Analytics:</strong> These cookies help us understand
           how you use our website by collecting information on the pages you
           visit and the time you spend on them. This data is used to improve
-          your browsing experience and optimize our site's performance.
+          your browsing experience and optimize our site&apos;s performance.
           <br />
           <br />
           <strong>Google Analytics:</strong> These cookies track your
@@ -31,7 +31,7 @@ const Cookies = () => {
           <br />
           <br />
           We keep these cookies for a maximum of 13 months. By accepting, you
-          consent to the use of these cookies as described in our{" "}
+          consent to the use of these cookies as described in our{' '}
           <Link
             href="/privacy-policy"
             className="underline text-blue-400 hover:text-blue-600"
