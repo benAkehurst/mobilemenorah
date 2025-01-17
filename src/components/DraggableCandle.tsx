@@ -34,6 +34,7 @@ const DraggableCandle: React.FC<DragAndDropCandleProps> = ({
   return (
     <Draggable
       bounds="parent" // Restrict movement to parent container
+      // @ts-expect-error
       onStop={handleStop} // Trigger interaction logic on drag stop
     >
       <div className="absolute cursor-grab z-50">
