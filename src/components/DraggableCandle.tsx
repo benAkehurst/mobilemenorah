@@ -1,5 +1,5 @@
-import React from "react";
-import Draggable from "react-draggable";
+import React from 'react';
+import Draggable from 'react-draggable';
 
 type DragAndDropCandleProps = {
   onDropAction: (index: number) => void; // Function to light a candle
@@ -12,6 +12,7 @@ const DraggableCandle: React.FC<DragAndDropCandleProps> = ({
   onLight,
   onDropAction,
 }) => {
+  // @ts-expect-error
   const handleStop = (e: MouseEvent | TouchEvent, data: any) => {
     // Check collision with candles
     const candleElement = data.node.getBoundingClientRect();

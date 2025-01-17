@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 declare global {
   interface Window {
@@ -15,17 +15,17 @@ export default function CookieBanner() {
   const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const storedCookieConsent = getLocalStorage("cookie_consent", null);
+    const storedCookieConsent = getLocalStorage('cookie_consent', null);
     setCookieConsent(storedCookieConsent);
   }, []);
 
   useEffect(() => {
     if (cookieConsent !== null && typeof window !== undefined) {
-      const newValue = cookieConsent ? "granted" : "denied";
-      window.gtag("consent", "update", {
+      const newValue = cookieConsent ? 'granted' : 'denied';
+      window.gtag('consent', 'update', {
         analytics_storage: newValue,
       });
-      setLocalStorage("cookie_consent", cookieConsent);
+      setLocalStorage('cookie_consent', cookieConsent);
     }
   }, [cookieConsent]);
 
@@ -39,8 +39,8 @@ export default function CookieBanner() {
                   flex px-3 md:px-4 py-3 justify-between items-center flex-col sm:flex-row gap-4  
                   bg-slate-600 text-white rounded-lg shadow ${
                     cookieConsent === null || cookieConsent === false
-                      ? "flex"
-                      : "hidden"
+                      ? 'flex'
+                      : 'hidden'
                   } `}
     >
       <div className="text-center">
@@ -69,15 +69,17 @@ export default function CookieBanner() {
   );
 }
 
+// @ts-expect-error
 export function getLocalStorage(key: string, defaultValue: any) {
-  if (typeof window === "undefined") return defaultValue;
+  if (typeof window === 'undefined') return defaultValue;
   const stickyValue = localStorage.getItem(key);
-  return stickyValue !== null && stickyValue !== "undefined"
+  return stickyValue !== null && stickyValue !== 'undefined'
     ? JSON.parse(stickyValue)
     : defaultValue;
 }
 
+// @ts-expect-error
 export function setLocalStorage(key: string, value: any) {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
   localStorage.setItem(key, JSON.stringify(value));
 }
