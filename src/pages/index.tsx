@@ -1,9 +1,9 @@
-import ColourPicker from "@/components/ColourPicker";
-import CookieBanner from "@/components/CookieBanner";
-import HannukahInfo from "@/components/HannukahInfo";
-import Menorah from "@/components/Menorah";
-import { useGetHanukkahDates } from "@/hooks/useGetHanukkahDates";
-import { useEffect, useState } from "react";
+import ColourPicker from '@/components/ColourPicker';
+import CookieBanner from '@/components/CookieBanner';
+import HannukahInfo from '@/components/HannukahInfo';
+import Menorah from '@/components/Menorah';
+import { useGetHanukkahDates } from '@/hooks/useGetHanukkahDates';
+import { useEffect, useState } from 'react';
 
 export type CandleData = {
   year: number;
@@ -21,13 +21,12 @@ export default function Home() {
     startDate: new Date(),
     endDate: new Date(),
     hebrewYear: 0,
-    hebrewStartDate: "",
-    hebrewEndDate: "",
+    hebrewStartDate: '',
+    hebrewEndDate: '',
   });
-  console.log("🚀 ~ Home ~ candleData:", candleData);
 
   const [dayOfHanukkah, setDayOfHanukkah] = useState<number>(0);
-  const [candleColour, setCandleColour] = useState<string>("");
+  const [candleColour, setCandleColour] = useState<string>('');
 
   useEffect(() => {
     setCandleData(hanukkahDatesThisYear[0]);
