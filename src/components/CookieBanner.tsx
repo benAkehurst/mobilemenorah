@@ -69,7 +69,7 @@ export default function CookieBanner() {
   );
 }
 
-// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getLocalStorage(key: string, defaultValue: any) {
   if (typeof window === 'undefined') return defaultValue;
   const stickyValue = localStorage.getItem(key);
@@ -78,7 +78,7 @@ export function getLocalStorage(key: string, defaultValue: any) {
     : defaultValue;
 }
 
-// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function setLocalStorage(key: string, value: any) {
   if (typeof window === 'undefined') return;
   localStorage.setItem(key, JSON.stringify(value));

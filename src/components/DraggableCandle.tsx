@@ -1,5 +1,5 @@
 import React from 'react';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableEvent } from 'react-draggable';
 
 type DragAndDropCandleProps = {
   onDropAction: (index: number) => void; // Function to light a candle
@@ -12,8 +12,11 @@ const DraggableCandle: React.FC<DragAndDropCandleProps> = ({
   onLight,
   onDropAction,
 }) => {
-  // @ts-expect-error
-  const handleStop = (e: MouseEvent | TouchEvent, data: any) => {
+  const handleStop = (
+    e: MouseEvent | TouchEvent | DraggableEvent,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    data: any
+  ) => {
     // Check collision with candles
     const candleElement = data.node.getBoundingClientRect();
     const holders = document.querySelectorAll("[data-testid='candle-wick']");
@@ -34,7 +37,6 @@ const DraggableCandle: React.FC<DragAndDropCandleProps> = ({
   return (
     <Draggable
       bounds="parent" // Restrict movement to parent container
-      // @ts-expect-error
       onStop={handleStop} // Trigger interaction logic on drag stop
     >
       <div className="absolute cursor-grab z-50">
