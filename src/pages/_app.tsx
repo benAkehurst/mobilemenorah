@@ -1,16 +1,17 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import { Lato } from "next/font/google";
-import Head from "next/head";
-import { appConfig } from "../../app.config";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import '@/styles/globals.css';
+import type { AppProps } from 'next/app';
+import { Lato } from 'next/font/google';
+import Head from 'next/head';
+import { appConfig } from '../../app.config';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { Analytics } from '@vercel/analytics/react';
 
 const lato = Lato({
-  variable: "--font-lato",
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700"],
+  variable: '--font-lato',
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700'],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -45,6 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <main className={`${lato.variable} ${lato.variable}`}>
         <Header />
         <Component {...pageProps} />
+        <Analytics />
         <Footer />
       </main>
     </>
