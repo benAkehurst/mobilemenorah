@@ -15,7 +15,7 @@ type AppConfig = {
 export const appConfig: AppConfig = {
   testingEmail: "benakehurst1@gmail.com",
   appName: "Mobile Menorah",
-  appDescription: "This app invents exciting stories for your little ones",
+  appDescription: "With Mobile Menorah you can celebrate and learn about Hanukkah with our interactive Menorah app! Light candles virtually, explore Hanukkah traditions, and enjoy an engaging experience for all ages. Perfect for families and kids to share the joy of the Festival of Lights.",
   appDomainName: "https://www.mobilemenorah.com",
   domainName: "mobilemenorah.com",
   companyName: "Mobile Monorah",
