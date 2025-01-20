@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { appConfig } from "../../app.config";
+import Head from 'next/head';
+import { appConfig } from '../../app.config';
 
 const AboutUs = () => {
   return (
@@ -35,13 +35,8 @@ const AboutUs = () => {
           <h3 className="text-xl font-bold mb-2">Get in touch</h3>
           <p>
             If you have any questions, feedback or suggestions, please get in
-            touch by href=
-            <a
-              href={`mailto:${appConfig.publicEmailAddress} subject=Mobile Menorah`}
-            >
-              emailing me
-            </a>
-            .
+            touch by
+            <a href={`mailto:${appConfig.publicEmailAddress}`}>emailing me</a>.
           </p>
         </div>
       </div>

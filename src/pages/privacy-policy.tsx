@@ -1,7 +1,7 @@
-import Head from "next/head";
-import Link from "next/link";
-import React from "react";
-import { appConfig } from "../../app.config";
+import Head from 'next/head';
+import Link from 'next/link';
+import React from 'react';
+import { appConfig } from '../../app.config';
 
 const PrivacyPolicy = () => {
   return (
@@ -78,13 +78,8 @@ const PrivacyPolicy = () => {
         <h3 className="text-xl font-bold mb-2">Contacting Us</h3>
         <p>
           If you have any questions about this Privacy Policy, the practices of
-          this site, or your dealings with this site, please{" "}
-          <a
-            href={`mailto:${appConfig.publicEmailAddress} subject=Mobile Menorah Privacy Policy`}
-          >
-            contact us
-          </a>
-          .
+          this site, or your dealings with this site, please{' '}
+          <a href={`mailto:${appConfig.publicEmailAddress}`}>contact us</a>.
         </p>
       </div>
     </>
