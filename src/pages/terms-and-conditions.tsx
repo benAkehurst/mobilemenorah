@@ -92,7 +92,7 @@ const TermsAndConditions = () => {
         <h3 className="text-xl font-bold mb-2">7. Contact Us</h3>
         <p className="mb-4">
           <p>
-            If you have any questions about these Terms, please contact us
+            If you have any questions about these Terms, please contact us{' '}
             <a href={`mailto:${appConfig.publicEmailAddress}`}> here</a>.
           </p>
         </p>

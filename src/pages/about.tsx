@@ -35,7 +35,7 @@ const AboutUs = () => {
           <h3 className="text-xl font-bold mb-2">Get in touch</h3>
           <p>
             If you have any questions, feedback or suggestions, please get in
-            touch by
+            touch by{' '}
             <a href={`mailto:${appConfig.publicEmailAddress}`}>emailing me</a>.
           </p>
         </div>
