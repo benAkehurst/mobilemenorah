@@ -60,7 +60,7 @@ export function homeSchema({
         browserRequirements: "Requires JavaScript",
         isAccessibleForFree: true,
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        image: `${base}/logo.webp`,
+        image: `${base}/icon-512.png`,
         creator: { "@id": ids.person },
         about: hanukkahThing,
         featureList: [

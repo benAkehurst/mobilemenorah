@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <title>Mobile Menorah</title>
+  <rect width="48" height="48" rx="11" fill="#080f1c"/>
+  <rect x="16" y="39" width="16" height="3" rx="1.5" fill="#d9a850"/>
+  <rect x="22.75" y="27" width="2.5" height="13" fill="#d9a850"/>
+  <rect x="5" y="26" width="38" height="2.5" rx="1.25" fill="#d9a850"/>
+  <g fill="#d9a850">
+    <rect x="5.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="9.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="13.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="17.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="27.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="31.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="35.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="39.9" y="18.5" width="2.2" height="7.5"/>
+    <rect x="22.8" y="11" width="2.4" height="15"/>
+  </g>
+  <g fill="#ffc249">
+    <ellipse cx="7" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="11" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="15" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="19" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="29" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="33" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="37" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="41" cy="15.6" rx="1.25" ry="2"/>
+    <ellipse cx="24" cy="7.6" rx="1.5" ry="2.4"/>
+  </g>
+</svg>

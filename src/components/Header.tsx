@@ -1,34 +1,44 @@
-import Image from "next/image";
 import Link from "next/link";
+import MenorahMark from "./MenorahMark";
+import ThemeToggle from "./theme/ThemeToggle";
 import { appConfig } from "../../app.config";
 
+const navLink =
+  "whitespace-nowrap text-night-muted no-underline transition-colors duration-150 ease-out hover:text-night-ink";
+
+/** Edge-aligned header on the night "window" band (design.md: N9). */
 export default function Header() {
   return (
-    <header className="bg-white shadow-sm">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.webp" alt="" width={32} height={32} className="h-8 w-8" priority />
-          <span className="font-semibold text-slate-900">{appConfig.appName}</span>
+    <header data-band="night" className="bg-night text-night-ink">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+        <Link href="/" className="flex items-center gap-2.5 text-night-ink no-underline">
+          <MenorahMark size={30} />
+          <span className="whitespace-nowrap font-display text-lg font-medium tracking-tight">
+            {appConfig.appName}
+          </span>
         </Link>
-        <nav aria-label="Main">
-          <ul className="flex gap-4 text-sm text-slate-700">
-            <li>
-              <Link href="/#how-to-light" className="hover:text-blue-700">
-                How to light
-              </Link>
-            </li>
-            <li>
-              <Link href="/#faq" className="hover:text-blue-700">
-                FAQ
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-blue-700">
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <div className="flex items-center gap-6">
+          <nav aria-label="Main" className="hidden md:block">
+            <ul className="flex gap-6 text-sm">
+              <li>
+                <Link href="/#how-to-light" className={navLink}>
+                  How to light
+                </Link>
+              </li>
+              <li>
+                <Link href="/#blessings" className={navLink}>
+                  Blessings
+                </Link>
+              </li>
+              <li>
+                <Link href="/#faq" className={navLink}>
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

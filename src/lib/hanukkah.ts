@@ -129,7 +129,7 @@ export function toHebrewNumeral(value: number, withThousands = false): string {
 
 function formatHebrew(ms: number): string {
   const { day, year } = hebrewDate(ms);
-  // The Hebrew month name from Intl already includes the ב prefix ("בכסלו").
+  // Month-only formatting gives the bare month name, e.g. "כסלו".
   const month = hebrewMonthHe.format(new Date(ms));
   return `${toHebrewNumeral(day)} ${month} ${toHebrewNumeral(year, true)}`;
 }

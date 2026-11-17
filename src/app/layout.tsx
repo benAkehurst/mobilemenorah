@@ -1,14 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Lato } from "next/font/google";
+import { Frank_Ruhl_Libre, IBM_Plex_Sans_Hebrew } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { themeInitScript } from "@/components/theme/theme";
 import { appConfig } from "../../app.config";
+import "./tokens.css";
 import "./globals.css";
 
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
+// Display face + all Hebrew (see design.md).
+const display = Frank_Ruhl_Libre({
+  subsets: ["latin", "hebrew"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+// Body + UI.
+const body = IBM_Plex_Sans_Hebrew({
+  subsets: ["latin", "hebrew"],
+  weight: ["400", "600"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -61,21 +72,22 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: "/logo.webp",
-    apple: "/logo.webp",
-  },
+  // Icons come from the file conventions: src/app/icon.svg and apple-icon.tsx.
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1e1b4b",
-  colorScheme: "light",
+  // The header is the night "window" band in both themes.
+  themeColor: "#080f1c",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${lato.className} flex min-h-screen flex-col bg-slate-100 text-slate-900 antialiased`}>
+    // data-theme is set before paint by themeInitScript, so React's markup won't match it.
+    <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="flex min-h-screen flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

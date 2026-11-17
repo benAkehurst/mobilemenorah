@@ -33,7 +33,9 @@ export default function PrivacyPolicyPage() {
 
       <h2>Cookies</h2>
       <p>
-        We don&apos;t use cookies or store anything on your device to track you.{" "}
+        We don&apos;t use cookies or store anything on your device to track you. If you choose a
+        Light or Dark theme, that preference is kept in your browser&apos;s local storage and never
+        sent to us.{" "}
         <Link href="/info/cookies">Read our cookie policy.</Link>
       </p>
 
@@ -47,7 +49,7 @@ export default function PrivacyPolicyPage() {
         If you have any questions about this policy,{" "}
         <a href={`mailto:${appConfig.publicEmailAddress}`}>contact us</a>.
       </p>
-      <p className="text-sm text-slate-500">Last updated: 17 November 2026</p>
+      <p className="text-sm text-muted">Last updated: 17 November 2026</p>
     </Prose>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import MenorahMark from "@/components/MenorahMark";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -8,18 +9,15 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex max-w-xl flex-col items-center px-4 py-24 text-center">
-      <p className="text-6xl" aria-hidden="true">
-        🕎
+    <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+      <MenorahMark size={56} tile />
+      <h1 className="mt-6 font-display text-4xl font-medium tracking-tight text-ink">Page not found</h1>
+      <p className="mt-3 text-muted">Sorry, we couldn&apos;t find that page.</p>
+      <p className="mt-6">
+        <Link href="/" className="font-semibold">
+          Go to the menorah
+        </Link>
       </p>
-      <h1 className="mt-4 text-3xl font-bold text-slate-900">Page not found</h1>
-      <p className="mt-2 text-slate-700">Sorry, we couldn&apos;t find that page.</p>
-      <Link
-        href="/"
-        className="mt-6 rounded-full bg-blue-700 px-5 py-2 font-semibold text-white hover:bg-blue-800"
-      >
-        Light the menorah
-      </Link>
     </div>
   );
 }
