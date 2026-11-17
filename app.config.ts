@@ -1,27 +1,40 @@
 type AppConfig = {
-  testingEmail: string;
   appName: string;
+  /** Used for <title> on the home page and in social cards. */
+  appTitle: string;
   appDescription: string;
+  /** Canonical origin, no trailing slash. */
   appDomainName: string;
   domainName: string;
   companyName: string;
   publicEmailAddress: string;
-  mainLink1Name: string;
-  mainLink1: string;
-  mainLink2Name: string;
-  mainLink2: string;
+  author: {
+    name: string;
+    url: string;
+  };
+  ads: {
+    /**
+     * Feature flag for adverts. Keep false until an ad network is approved
+     * and its script/consent requirements are wired into <AdSlot />.
+     */
+    enabled: boolean;
+  };
 };
 
 export const appConfig: AppConfig = {
-  testingEmail: "benakehurst1@gmail.com",
   appName: "Mobile Menorah",
-  appDescription: "With Mobile Menorah you can celebrate and learn about Hanukkah with our interactive Menorah app! Light candles virtually, explore Hanukkah traditions, and enjoy an engaging experience for all ages. Perfect for families and kids to share the joy of the Festival of Lights.",
+  appTitle: "Mobile Menorah – Light a Virtual Hanukkah Menorah Online",
+  appDescription:
+    "Light a virtual Hanukkah menorah on your phone, tablet or computer. See tonight's candle count, the Hanukkah blessings in Hebrew and English, this year's Hanukkah dates and how to light the menorah. Free, with nothing to install.",
   appDomainName: "https://www.mobilemenorah.com",
   domainName: "mobilemenorah.com",
-  companyName: "Mobile Monorah",
+  companyName: "Mobile Menorah",
   publicEmailAddress: "benakehurstyt@gmail.com",
-  mainLink1Name: "Features coming soon!",
-  mainLink1: "/coming-soon",
-  mainLink2Name: "Demos",
-  mainLink2: "/demos",
+  author: {
+    name: "Ben Akehurst",
+    url: "https://www.benakehurst.com",
+  },
+  ads: {
+    enabled: false,
+  },
 };
