@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Frank_Ruhl_Libre, IBM_Plex_Sans_Hebrew } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { themeInitScript } from "@/components/theme/theme";
@@ -93,6 +94,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         {/* Vercel Web Analytics is cookieless, so no consent banner is needed. */}
         <Analytics />
+        {/* Core Web Vitals from real visits; also cookieless. */}
+        <SpeedInsights />
       </body>
     </html>
   );
