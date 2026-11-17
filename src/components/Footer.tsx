@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { appConfig } from "../../app.config";
-import { CookieSettingsButton } from "./consent/ConsentProvider";
 
 const linkClass = "hover:text-blue-700 hover:underline";
 
@@ -29,9 +28,6 @@ export default function Footer() {
               <Link href="/info/cookies" className={linkClass}>
                 Cookies
               </Link>
-            </li>
-            <li>
-              <CookieSettingsButton className={linkClass} />
             </li>
           </ul>
         </nav>

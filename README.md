@@ -7,7 +7,7 @@ A free virtual Hanukkah menorah at [mobilemenorah.com](https://www.mobilemenorah
 - Next.js 16 (App Router, Turbopack), React 19, TypeScript
 - Tailwind CSS 3
 - `react-draggable` for the shamash
-- Vercel Analytics (cookieless) and Google Analytics (loaded only after cookie consent)
+- Vercel Analytics (cookieless, so no cookie banner)
 
 ## Getting started
 
@@ -21,8 +21,6 @@ npm run typecheck
 npm run build
 ```
 
-Set `NEXT_PUBLIC_GOOGLE_ANALYTICS` to a GA4 measurement ID to enable Google Analytics.
-
 ## How it's organised
 
 | Path | What it does |
@@ -34,6 +32,5 @@ Set `NEXT_PUBLIC_GOOGLE_ANALYTICS` to a GA4 measurement ID to enable Google Anal
 | `src/lib/schema.ts` | schema.org structured data (WebSite, WebApplication, HowTo, FAQPage, …) |
 | `src/app/llms.txt`, `src/app/llms-full.txt` | Plain-text summaries for AI answer engines ([llmstxt.org](https://llmstxt.org)) |
 | `src/app/robots.ts`, `sitemap.ts`, `manifest.ts`, `opengraph-image.tsx` | Crawling, PWA manifest and social card |
-| `src/components/consent/ConsentProvider.tsx` | Cookie banner and consent-gated Google Analytics |
 | `src/components/AdSlot.tsx` | Ad placeholder behind `appConfig.ads.enabled` |
 | `app.config.ts` | Site name, domain, contact details and feature flags |

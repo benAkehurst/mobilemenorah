@@ -3,7 +3,6 @@ import { Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ConsentProvider from "@/components/consent/ConsentProvider";
 import { appConfig } from "../../app.config";
 import "./globals.css";
 
@@ -77,11 +76,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${lato.className} flex min-h-screen flex-col bg-slate-100 text-slate-900 antialiased`}>
-        <ConsentProvider gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ConsentProvider>
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        {/* Vercel Web Analytics is cookieless, so no consent banner is needed. */}
         <Analytics />
       </body>
     </html>

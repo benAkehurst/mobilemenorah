@@ -6,7 +6,7 @@ import { pageSchema } from "@/lib/schema";
 import { appConfig } from "../../../app.config";
 
 const title = "Privacy policy";
-const description = `How ${appConfig.appName} handles your data: no accounts, cookieless Vercel Analytics, and Google Analytics only with your consent.`;
+const description = `How ${appConfig.appName} handles your data: no accounts, no cookies, and cookieless Vercel Analytics.`;
 
 export const metadata = pageMetadata({ title, description, path: "/privacy-policy" });
 
@@ -26,23 +26,15 @@ export default function PrivacyPolicyPage() {
       </p>
 
       <h2>Analytics</h2>
-      <ul>
-        <li>
-          <strong>Vercel Analytics</strong> counts page views and visits without using cookies or
-          identifying you.
-        </li>
-        <li>
-          <strong>Google Analytics</strong> is only loaded if you choose &quot;Allow cookies&quot;.
-          It helps us understand how the site is used, such as which pages are visited and roughly
-          where visitors are from.
-        </li>
-      </ul>
-
-      <h2>Cookies and local storage</h2>
       <p>
-        Your cookie choice is saved in your browser&apos;s local storage so we don&apos;t ask again
-        on every visit. You can change it at any time with the &quot;Cookie settings&quot; link in
-        the footer. <Link href="/info/cookies">Read more about cookies on this site.</Link>
+        We use Vercel Analytics to count page views and visits, such as which pages are viewed and
+        which country visitors are in. It doesn&apos;t use cookies and doesn&apos;t identify you.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        We don&apos;t use cookies or store anything on your device to track you.{" "}
+        <Link href="/info/cookies">Read our cookie policy.</Link>
       </p>
 
       <h2>Changes to this policy</h2>

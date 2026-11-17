@@ -25,15 +25,9 @@ export default function TermsPage() {
       </p>
 
       <h2>2. Analytics</h2>
-      <h3>2.1 Google Analytics</h3>
       <p>
-        If you allow cookies, we use Google Analytics to understand how the App is used, such as
-        how often people visit and which pages they view. We use this to improve the App.
-      </p>
-      <h3>2.2 Vercel Analytics</h3>
-      <p>
-        We use cookieless Vercel Analytics to measure traffic and performance so we can improve the
-        App.
+        We use cookieless Vercel Analytics to understand how the App is used, such as how often
+        people visit and which pages they view, so we can improve it.
       </p>
 
       <h2>3. User conduct</h2>
