@@ -1,24 +1,35 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { appConfig } from "../../app.config";
 
-const Header = () => {
+export default function Header() {
   return (
-    <header className="bg-base-100 shadow" id="header">
-      <div className="container mx-auto flex justify-between items-center p-4">
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.webp"
-            alt="logo"
-            width={40}
-            height={40}
-            className="w-8 h-8"
-          />
-          <h1 className="text-md font-semibold ml-2">{appConfig.appName}</h1>
+    <header className="bg-white shadow-sm">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo.webp" alt="" width={32} height={32} className="h-8 w-8" priority />
+          <span className="font-semibold text-slate-900">{appConfig.appName}</span>
         </Link>
+        <nav aria-label="Main">
+          <ul className="flex gap-4 text-sm text-slate-700">
+            <li>
+              <Link href="/#how-to-light" className="hover:text-blue-700">
+                How to light
+              </Link>
+            </li>
+            <li>
+              <Link href="/#faq" className="hover:text-blue-700">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:text-blue-700">
+                About
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
