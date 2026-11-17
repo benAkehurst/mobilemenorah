@@ -20,6 +20,12 @@ export default function CookiesPage() {
         device to track you, so there&apos;s no cookie banner.
       </p>
 
+      <h2>Your theme choice</h2>
+      <p>
+        If you pick Light or Dark, that choice is saved in your browser&apos;s local storage so the
+        site remembers it. It never leaves your device. Choosing System removes it.
+      </p>
+
       <h2>Analytics</h2>
       <p>
         We use Vercel Analytics to count visits and page views. It works without cookies and

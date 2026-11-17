@@ -1,0 +1,90 @@
+/* Hallmark · genre: editorial (+ atmospheric window band) · design-system: design.md · designed-as-app
+ * Tokens for Mobile Menorah. Every colour and font in the app references these.
+ * Light = parchment by day. Dark = the whole page becomes night.
+ * The "window" band (--color-night*) stays dark in both themes: candlelight needs darkness.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Paper + ink (light / parchment) */
+  --color-paper: oklch(96.5% 0.012 85);
+  --color-paper-2: oklch(93.5% 0.016 85);
+  --color-rule: oklch(85% 0.016 80);
+  --color-muted: oklch(46% 0.018 260);
+  --color-ink: oklch(21% 0.025 262);
+
+  /* Accents: brass (primary), Hanukkah blue (links + focus only) */
+  --color-brass: oklch(76% 0.12 80);
+  --color-brass-deep: oklch(52% 0.1 70);
+  --color-link: oklch(44% 0.14 258);
+  --color-focus: oklch(50% 0.17 258);
+
+  /* The window: night sky, identical in both themes */
+  --color-night: oklch(17% 0.03 262);
+  --color-night-2: oklch(22% 0.035 262);
+  --color-night-rule: oklch(32% 0.03 262);
+  --color-night-ink: oklch(94% 0.012 85);
+  --color-night-muted: oklch(76% 0.02 85);
+  --color-focus-night: oklch(78% 0.13 252);
+
+  /* Menorah metal (fixed: the menorah always sits in the night window) */
+  --color-brass-shade: oklch(58% 0.11 70);
+
+  /* Flame */
+  --shadow-flame: 0 0 18px 6px oklch(85% 0.15 80 / 0.45);
+  --color-flame-core: oklch(97% 0.04 95);
+  --color-flame: oklch(85% 0.15 80);
+  --color-flame-edge: oklch(68% 0.19 50);
+  --color-wax-shamash: oklch(92% 0.05 90);
+  --color-wick: oklch(80% 0.01 85);
+
+  /* Candle colours (user-selectable) */
+  --color-candle-blue: oklch(62% 0.15 258);
+  --color-candle-white: oklch(96% 0.01 85);
+  --color-candle-red: oklch(60% 0.19 25);
+  --color-candle-green: oklch(62% 0.14 150);
+  --color-candle-yellow: oklch(86% 0.15 92);
+  --color-candle-purple: oklch(55% 0.15 300);
+  --color-candle-orange: oklch(70% 0.16 55);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-short: 180ms;
+  --dur-return: 320ms;
+}
+
+/* The night band is dark in both themes, so focus rings inside it always use
+ * the light-on-dark blue. Every focus style reads --color-focus, so this
+ * covers links, the theme toggle and the menorah controls. */
+[data-band="night"] {
+  --color-focus: var(--color-focus-night);
+}
+
+/* Explicit dark choice */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: oklch(15% 0.022 262);
+  --color-paper-2: oklch(19% 0.027 262);
+  --color-rule: oklch(30% 0.025 262);
+  --color-muted: oklch(74% 0.018 85);
+  --color-ink: oklch(93% 0.012 85);
+  --color-brass-deep: oklch(80% 0.11 80);
+  --color-link: oklch(80% 0.1 252);
+  --color-focus: oklch(78% 0.13 252);
+}
+
+/* System choice (no data-theme attribute) follows the OS */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --color-paper: oklch(15% 0.022 262);
+    --color-paper-2: oklch(19% 0.027 262);
+    --color-rule: oklch(30% 0.025 262);
+    --color-muted: oklch(74% 0.018 85);
+    --color-ink: oklch(93% 0.012 85);
+    --color-brass-deep: oklch(80% 0.11 80);
+    --color-link: oklch(80% 0.1 252);
+    --color-focus: oklch(78% 0.13 252);
+  }
+}

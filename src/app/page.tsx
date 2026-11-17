@@ -1,3 +1,4 @@
+/* Hallmark · genre: editorial (+ atmospheric window) · macrostructure: Marquee Hero · design-system: design.md · designed-as-app · nav: N9 · footer: Ft5 */
 import AdSlot from "@/components/AdSlot";
 import HanukkahStatus from "@/components/HanukkahStatus";
 import JsonLd from "@/components/JsonLd";
@@ -15,6 +16,8 @@ import { homeSchema } from "@/lib/schema";
 // without needing a redeploy.
 export const revalidate = 21600;
 
+const sectionHeading = "font-display text-h2 font-medium tracking-tight text-ink";
+
 export default function Home() {
   const today = localToday();
   const upcoming = getUpcomingHanukkahs(today, 6);
@@ -25,140 +28,160 @@ export default function Home() {
     <>
       <JsonLd data={homeSchema({ faqs, steps: howToSteps, modified: today })} />
 
-      <div className="mx-auto max-w-3xl px-4 pt-8 text-center sm:pt-12">
-        <p className="mb-2 text-lg text-slate-600" lang="he" dir="rtl">
-          חנוכה שמח
-        </p>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-          Light a virtual Hanukkah menorah
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-700">
-          {describeHanukkah(current)} Light the candles below on your phone, tablet or
-          computer – no download needed.
-        </p>
-        <div className="mt-4">
-          <HanukkahStatus />
+      {/* The window: night band holding the headline and the menorah. */}
+      <section aria-labelledby="page-title" data-band="night" className="border-b-[3px] border-brass-shade bg-night text-night-ink">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-10 pt-8 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-end lg:gap-14 lg:pb-14 lg:pt-14">
+          <div className="lg:pb-24">
+            <p lang="he" dir="rtl" className="text-left text-2xl text-brass">
+              חנוכה שמח
+            </p>
+            <h1
+              id="page-title"
+              className="mt-3 font-display text-display font-medium tracking-tight"
+            >
+              Light a virtual Hanukkah menorah
+            </h1>
+            <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-night-muted sm:text-lg">
+              {describeHanukkah(current)}
+            </p>
+            <div className="mt-6">
+              <HanukkahStatus />
+            </div>
+          </div>
+          <MenorahExperience />
         </div>
-      </div>
-
-      <div className="mx-auto mt-8 max-w-3xl px-4">
-        <MenorahExperience />
-      </div>
+      </section>
 
       <AdSlot id="home-below-menorah" />
 
-      <article className="mx-auto mt-16 max-w-3xl space-y-16 px-4">
-        <section id="how-to-light" aria-labelledby="how-to-light-heading">
-          <h2 id="how-to-light-heading" className="text-2xl font-bold text-slate-900 sm:text-3xl">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <section id="how-to-light" aria-labelledby="how-to-light-heading" className="max-w-[65ch] pt-20 sm:pt-24">
+          <h2 id="how-to-light-heading" className={sectionHeading}>
             How to light the menorah
           </h2>
-          <p className="mt-3 text-slate-700">
-            On each night of Hanukkah, light one more candle than the night before, plus the
-            shamash. Here&apos;s how, step by step.
+          <p className="mt-4 text-lg leading-relaxed text-muted">
+            Each night, light one more candle than the night before, plus the shamash.
           </p>
-          <ol className="mt-6 space-y-4">
+          <ol className="mt-8 border-b border-rule">
             {howToSteps.map((step, i) => (
-              <li key={step.name} className="flex gap-4 rounded-xl bg-white p-4 shadow-sm">
-                <span
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-700 font-semibold text-white"
-                  aria-hidden="true"
-                >
+              <li key={step.name} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-t border-rule py-5">
+                <span className="font-display text-3xl leading-none text-brass-deep tabular-nums" aria-hidden="true">
                   {i + 1}
                 </span>
                 <div>
-                  <h3 className="font-semibold text-slate-900">{step.name}</h3>
-                  <p className="mt-1 text-slate-700">{step.text}</p>
+                  <h3 className="font-semibold text-ink">{step.name}</h3>
+                  <p className="mt-1 leading-relaxed text-muted">{step.text}</p>
                 </div>
               </li>
             ))}
           </ol>
         </section>
 
-        <section id="blessings" aria-labelledby="blessings-heading">
-          <h2 id="blessings-heading" className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            Hanukkah blessings
-          </h2>
-          <p className="mt-3 text-slate-700">
-            Say these blessings after lighting the shamash and before lighting the candles.
-          </p>
-          <div className="mt-6 space-y-4">
+        <section id="blessings" aria-labelledby="blessings-heading" className="pt-24 sm:pt-32">
+          <div className="max-w-[65ch]">
+            <h2 id="blessings-heading" className={sectionHeading}>
+              The blessings
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted">
+              Said after lighting the shamash, before lighting the candles.
+            </p>
+          </div>
+          <div className="mt-10 border-b border-rule">
             {blessings.map((blessing) => (
-              <section key={blessing.id} className="rounded-xl bg-white p-5 shadow-sm">
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-slate-900">{blessing.title}</h3>
-                  <span className="text-sm font-medium text-blue-800">{blessing.when}</span>
+              <article key={blessing.id} className="border-t border-rule py-8">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                  <h3 className="font-semibold text-ink">{blessing.title}</h3>
+                  <p className="text-sm text-brass-deep">{blessing.when}</p>
                 </div>
-                <p className="mt-3 text-xl leading-relaxed text-slate-900" lang="he" dir="rtl">
-                  {blessing.hebrew}
-                </p>
-                <p className="mt-3 italic text-slate-700">{blessing.transliteration}</p>
-                <p className="mt-2 text-slate-600">{blessing.translation}</p>
-              </section>
+                <div className="mt-4 grid gap-5 md:grid-cols-2 md:gap-12">
+                  <p
+                    lang="he"
+                    dir="rtl"
+                    className="text-2xl leading-[1.7] text-ink md:order-2 md:text-[1.75rem]"
+                  >
+                    {blessing.hebrew}
+                  </p>
+                  <div className="md:order-1">
+                    <p className="italic leading-relaxed text-ink">{blessing.transliteration}</p>
+                    <p className="mt-3 leading-relaxed text-muted">{blessing.translation}</p>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </section>
 
-        <section id="dates" aria-labelledby="dates-heading">
-          <h2 id="dates-heading" className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            Hanukkah dates
-          </h2>
-          <p className="mt-3 text-slate-700">
-            Hanukkah starts on 25 Kislev in the Hebrew calendar, so its Gregorian date changes
-            every year. Each night begins at sundown.
-          </p>
-          <div className="mt-6 overflow-x-auto rounded-xl bg-white shadow-sm">
-            <table className="w-full text-left text-sm sm:text-base">
-              <caption className="sr-only">Hanukkah dates for the coming years</caption>
-              <thead className="bg-slate-50 text-slate-600">
-                <tr>
-                  <th scope="col" className="px-4 py-3 font-semibold">Year</th>
-                  <th scope="col" className="px-4 py-3 font-semibold">First candle (evening)</th>
-                  <th scope="col" className="px-4 py-3 font-semibold">Ends (nightfall)</th>
-                  <th scope="col" className="px-4 py-3 font-semibold">Hebrew dates</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {upcoming.map((h) => (
-                  <tr key={h.year}>
-                    <th scope="row" className="px-4 py-3 font-semibold text-slate-900">
+        <section id="dates" aria-labelledby="dates-heading" className="pt-20 sm:pt-24">
+          <div className="max-w-[65ch]">
+            <h2 id="dates-heading" className={sectionHeading}>
+              Hanukkah dates
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted">
+              Hanukkah starts on 25 Kislev in the Hebrew calendar, so its date moves each year.
+              Every night begins at sundown.
+            </p>
+          </div>
+          {/* Below sm, each row becomes a two-column block with the Hebrew dates underneath. */}
+          <table className="mt-8 block w-full max-w-4xl text-left tabular-nums sm:table">
+            <caption className="sr-only">Hanukkah dates for the coming years</caption>
+            <thead className="sr-only text-sm text-muted sm:not-sr-only sm:table-header-group">
+              <tr className="border-b border-rule">
+                <th scope="col" className="py-3 pr-4 font-semibold">Year</th>
+                <th scope="col" className="py-3 pr-4 font-semibold">First candle</th>
+                <th scope="col" className="py-3 pr-4 font-semibold">Ends at nightfall</th>
+                <th scope="col" className="py-3 font-semibold">Hebrew dates</th>
+              </tr>
+            </thead>
+            <tbody className="block border-t border-rule sm:table-row-group sm:border-t-0">
+              {upcoming.map((h, i) => (
+                <tr
+                  key={h.year}
+                  className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-3 border-b border-rule py-4 align-top sm:table-row sm:py-0"
+                >
+                  <th scope="row" className="font-display text-xl font-medium text-ink sm:table-cell sm:py-4 sm:pr-4">
+                    <span className="flex items-center gap-2">
+                      {i === 0 && <span className="h-2 w-2 rounded-full bg-brass" aria-hidden="true" />}
                       {h.year}
-                    </th>
-                    <td className="px-4 py-3">{formatShortDate(h.firstCandle)}</td>
-                    <td className="px-4 py-3">{formatShortDate(h.endDate)}</td>
-                    <td className="px-4 py-3">
-                      <span className="block">
-                        {h.hebrewStartEn} – {h.hebrewEndEn}
-                      </span>
-                      <span className="block text-slate-500" lang="he" dir="rtl">
-                        {h.hebrewStart} – {h.hebrewEnd}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                      {i === 0 && <span className="sr-only"> (next)</span>}
+                    </span>
+                  </th>
+                  <td className="text-ink sm:table-cell sm:py-4 sm:pr-4">
+                    <span className="whitespace-nowrap">{formatShortDate(h.firstCandle)}</span>
+                    <span className="block text-sm text-muted sm:hidden">
+                      ends at nightfall {formatShortDate(h.endDate)}
+                    </span>
+                  </td>
+                  <td className="hidden whitespace-nowrap text-ink sm:table-cell sm:py-4 sm:pr-4">
+                    {formatShortDate(h.endDate)}
+                  </td>
+                  <td className="col-start-2 mt-2 text-sm text-muted sm:mt-0 sm:table-cell sm:py-4">
+                    <span className="block">
+                      {h.hebrewStartEn} – {h.hebrewEndEn}
+                    </span>
+                    <span className="block text-left text-base" lang="he" dir="rtl">
+                      {h.hebrewStart} – {h.hebrewEnd}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
 
-        <section id="faq" aria-labelledby="faq-heading">
-          <h2 id="faq-heading" className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            Hanukkah questions and answers
+        <section id="faq" aria-labelledby="faq-heading" className="max-w-[65ch] pt-24 sm:pt-32">
+          <h2 id="faq-heading" className={sectionHeading}>
+            Questions and answers
           </h2>
-          <div className="mt-6 space-y-3">
+          <div className="mt-8 border-b border-rule">
             {faqs.map((faq) => (
-              <details key={faq.question} className="group rounded-xl bg-white p-4 shadow-sm">
-                <summary className="cursor-pointer list-none font-semibold text-slate-900 marker:hidden">
-                  <h3 className="inline">{faq.question}</h3>
-                  <span className="float-right text-blue-700 group-open:rotate-45 motion-safe:transition-transform" aria-hidden="true">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-3 text-slate-700">{faq.answer}</p>
-              </details>
+              <div key={faq.question} className="border-t border-rule py-6">
+                <h3 className="font-display text-xl font-medium text-ink">{faq.question}</h3>
+                <p className="mt-2 leading-relaxed text-muted">{faq.answer}</p>
+              </div>
             ))}
           </div>
         </section>
-      </article>
+      </div>
     </>
   );
 }

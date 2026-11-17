@@ -9,7 +9,7 @@ export default function HanukkahStatus() {
 
   if (!today) {
     // Reserve the line's height so the layout doesn't jump after hydration.
-    return <p className="min-h-7" aria-hidden="true" />;
+    return <p className="min-h-14" aria-hidden="true" />;
   }
 
   const status = getHanukkahStatus(today);
@@ -18,8 +18,8 @@ export default function HanukkahStatus() {
     case "night":
       text =
         status.night === 1
-          ? "Hanukkah begins tonight! Light the first candle after sundown."
-          : `Tonight is the ${ordinal(status.night)} night of Hanukkah – light ${status.night} candles plus the shamash.`;
+          ? "Hanukkah begins tonight. Light the first candle after sundown."
+          : `Tonight is the ${ordinal(status.night)} night: light ${status.night} candles and the shamash.`;
       break;
     case "lastDay":
       text = "Today is the eighth and final day of Hanukkah. It ends at nightfall.";
@@ -35,8 +35,9 @@ export default function HanukkahStatus() {
   }
 
   return (
-    <p className="min-h-7 text-lg font-semibold text-blue-900" role="status">
-      {text}
+    <p className="flex min-h-14 items-start gap-3 text-base font-semibold text-night-ink sm:text-lg" role="status">
+      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-flame shadow-flame" aria-hidden="true" />
+      <span>{text}</span>
     </p>
   );
 }

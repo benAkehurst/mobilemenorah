@@ -1,50 +1,56 @@
 import Link from "next/link";
 import { appConfig } from "../../app.config";
 
-const linkClass = "hover:text-blue-700 hover:underline";
+const footLink = "whitespace-nowrap text-muted no-underline hover:text-ink hover:underline";
 
+/** Statement footer (design.md: Ft5): one closing line, then an inline row. */
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 py-8 text-sm text-slate-600">
-        <nav aria-label="Footer">
-          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-            <li>
-              <Link href="/about" className={linkClass}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy-policy" className={linkClass}>
-                Privacy policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms-and-conditions" className={linkClass}>
-                Terms
-              </Link>
-            </li>
-            <li>
-              <Link href="/info/cookies" className={linkClass}>
-                Cookies
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <p>
-          © {new Date().getFullYear()} {appConfig.companyName}. All rights reserved.
+    <footer className="mt-24 border-t border-rule">
+      <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:px-8">
+        <p className="font-display text-2xl font-medium tracking-tight text-ink sm:text-3xl">
+          <span lang="he" dir="rtl">
+            חג אורים שמח
+          </span>
+          , a happy Festival of Lights.
         </p>
-        <p>
-          Created by{" "}
-          <a
-            href={`${appConfig.author.url}?utm_source=mobile-menorah`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2"
-          >
-            {appConfig.author.name}
-          </a>
-        </p>
+        <div className="mt-8 flex flex-col gap-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+          <nav aria-label="Footer">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              <li>
+                <Link href="/about" className={footLink}>
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className={footLink}>
+                  Privacy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-and-conditions" className={footLink}>
+                  Terms
+                </Link>
+              </li>
+              <li>
+                <Link href="/info/cookies" className={footLink}>
+                  Cookies
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <p>
+            © {new Date().getFullYear()} {appConfig.companyName} · Made by{" "}
+            <a
+              href={`${appConfig.author.url}?utm_source=mobile-menorah`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whitespace-nowrap text-muted hover:text-ink"
+            >
+              {appConfig.author.name}
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

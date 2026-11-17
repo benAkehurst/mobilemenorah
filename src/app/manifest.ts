@@ -8,9 +8,14 @@ export default function manifest(): MetadataRoute.Manifest {
     description: appConfig.appDescription,
     start_url: "/",
     display: "standalone",
-    background_color: "#f1f5f9",
-    theme_color: "#1e1b4b",
+    // Hex equivalents of --color-night (the window band).
+    background_color: "#080f1c",
+    theme_color: "#080f1c",
     categories: ["lifestyle", "education"],
-    icons: [{ src: "/logo.webp", sizes: "1024x1024", type: "image/webp", purpose: "any" }],
+    icons: [
+      { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
+      { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+      { src: "/apple-icon", sizes: "180x180", type: "image/png", purpose: "any" },
+    ],
   };
 }
