@@ -89,8 +89,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="flex min-h-screen flex-col antialiased">
+        {/* First tab stop. Sits over the night header, so it takes the band's focus colour. */}
+        <a
+          href="#main"
+          data-band="night"
+          className="sr-only no-underline focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brass focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-night"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <Footer />
         {/* Vercel Web Analytics is cookieless, so no consent banner is needed. */}
         <Analytics />

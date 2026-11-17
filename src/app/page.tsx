@@ -121,51 +121,60 @@ export default function Home() {
               Every night begins at sundown.
             </p>
           </div>
-          {/* Below sm, each row becomes a two-column block with the Hebrew dates underneath. */}
-          <table className="mt-8 block w-full max-w-4xl text-left tabular-nums sm:table">
-            <caption className="sr-only">Hanukkah dates for the coming years</caption>
-            <thead className="sr-only text-sm text-muted sm:not-sr-only sm:table-header-group">
-              <tr className="border-b border-rule">
-                <th scope="col" className="py-3 pr-4 font-semibold">Year</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">First candle</th>
-                <th scope="col" className="py-3 pr-4 font-semibold">Ends at nightfall</th>
-                <th scope="col" className="py-3 font-semibold">Hebrew dates</th>
-              </tr>
-            </thead>
-            <tbody className="block border-t border-rule sm:table-row-group sm:border-t-0">
-              {upcoming.map((h, i) => (
-                <tr
-                  key={h.year}
-                  className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-3 border-b border-rule py-4 align-top sm:table-row sm:py-0"
-                >
-                  <th scope="row" className="font-display text-xl font-medium text-ink sm:table-cell sm:py-4 sm:pr-4">
-                    <span className="flex items-center gap-2">
-                      {i === 0 && <span className="h-2 w-2 rounded-full bg-brass" aria-hidden="true" />}
-                      {h.year}
-                      {i === 0 && <span className="sr-only"> (next)</span>}
-                    </span>
-                  </th>
-                  <td className="text-ink sm:table-cell sm:py-4 sm:pr-4">
-                    <span className="whitespace-nowrap">{formatShortDate(h.firstCandle)}</span>
-                    <span className="block text-sm text-muted sm:hidden">
-                      ends at nightfall {formatShortDate(h.endDate)}
-                    </span>
-                  </td>
-                  <td className="hidden whitespace-nowrap text-ink sm:table-cell sm:py-4 sm:pr-4">
-                    {formatShortDate(h.endDate)}
-                  </td>
-                  <td className="col-start-2 mt-2 text-sm text-muted sm:mt-0 sm:table-cell sm:py-4">
-                    <span className="block">
-                      {h.hebrewStartEn} – {h.hebrewEndEn}
-                    </span>
-                    <span className="block text-left text-base" lang="he" dir="rtl">
-                      {h.hebrewStart} – {h.hebrewEnd}
-                    </span>
-                  </td>
+          {/* Scrolls sideways instead of being clipped when text is enlarged
+              (the page hides horizontal overflow). Focusable so keyboard users can scroll it. */}
+          <div
+            role="region"
+            aria-label="Hanukkah dates table"
+            tabIndex={0}
+            className="mt-8 max-w-4xl overflow-x-auto"
+          >
+            {/* Below sm, each row becomes a two-column block with the Hebrew dates underneath. */}
+            <table className="block w-full text-left tabular-nums sm:table">
+              <caption className="sr-only">Hanukkah dates for the coming years</caption>
+              <thead className="sr-only text-sm text-muted sm:not-sr-only sm:table-header-group">
+                <tr className="border-b border-rule">
+                  <th scope="col" className="py-3 pr-4 font-semibold">Year</th>
+                  <th scope="col" className="py-3 pr-4 font-semibold">First candle</th>
+                  <th scope="col" className="py-3 pr-4 font-semibold">Ends at nightfall</th>
+                  <th scope="col" className="py-3 font-semibold">Hebrew dates</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="block border-t border-rule sm:table-row-group sm:border-t-0">
+                {upcoming.map((h, i) => (
+                  <tr
+                    key={h.year}
+                    className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-3 border-b border-rule py-4 align-top sm:table-row sm:py-0"
+                  >
+                    <th scope="row" className="font-display text-xl font-medium text-ink sm:table-cell sm:py-4 sm:pr-4">
+                      <span className="flex items-center gap-2">
+                        {i === 0 && <span className="h-2 w-2 rounded-full bg-brass" aria-hidden="true" />}
+                        {h.year}
+                        {i === 0 && <span className="sr-only"> (next)</span>}
+                      </span>
+                    </th>
+                    <td className="text-ink sm:table-cell sm:py-4 sm:pr-4">
+                      <span className="whitespace-nowrap">{formatShortDate(h.firstCandle)}</span>
+                      <span className="block text-sm text-muted sm:hidden">
+                        ends at nightfall {formatShortDate(h.endDate)}
+                      </span>
+                    </td>
+                    <td className="hidden whitespace-nowrap text-ink sm:table-cell sm:py-4 sm:pr-4">
+                      {formatShortDate(h.endDate)}
+                    </td>
+                    <td className="col-start-2 mt-2 text-sm text-muted sm:mt-0 sm:table-cell sm:py-4">
+                      <span className="block">
+                        {h.hebrewStartEn} – {h.hebrewEndEn}
+                      </span>
+                      <span className="block text-left text-base" lang="he" dir="rtl">
+                        {h.hebrewStart} – {h.hebrewEnd}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section id="faq" aria-labelledby="faq-heading" className="max-w-[65ch] pt-24 sm:pt-32">
