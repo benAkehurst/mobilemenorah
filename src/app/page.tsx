@@ -3,7 +3,7 @@ import AdSlot from "@/components/AdSlot";
 import HanukkahStatus from "@/components/HanukkahStatus";
 import JsonLd from "@/components/JsonLd";
 import MenorahExperience from "@/components/menorah/MenorahExperience";
-import { blessings, getFaqs, howToSteps } from "@/lib/content";
+import { blessings, getFaqs, homeCopy, howToSteps } from "@/lib/content";
 import {
   describeHanukkah,
   formatShortDate,
@@ -39,7 +39,7 @@ export default function Home() {
               id="page-title"
               className="mt-3 font-display text-display font-medium tracking-tight"
             >
-              Light a virtual Hanukkah menorah
+              {homeCopy.heading}
             </h1>
             <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-night-muted sm:text-lg">
               {describeHanukkah(current)}
@@ -57,11 +57,9 @@ export default function Home() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <section id="how-to-light" aria-labelledby="how-to-light-heading" className="max-w-[65ch] pt-20 sm:pt-24">
           <h2 id="how-to-light-heading" className={sectionHeading}>
-            How to light the menorah
+            {homeCopy.howToHeading}
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted">
-            Each night, light one more candle than the night before, plus the shamash.
-          </p>
+          <p className="mt-4 text-lg leading-relaxed text-muted">{homeCopy.howToIntro}</p>
           <ol className="mt-8 border-b border-rule">
             {howToSteps.map((step, i) => (
               <li key={step.name} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-t border-rule py-5">
@@ -80,11 +78,9 @@ export default function Home() {
         <section id="blessings" aria-labelledby="blessings-heading" className="pt-24 sm:pt-32">
           <div className="max-w-[65ch]">
             <h2 id="blessings-heading" className={sectionHeading}>
-              The blessings
+              {homeCopy.blessingsHeading}
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              Said after lighting the shamash, before lighting the candles.
-            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted">{homeCopy.blessingsIntro}</p>
           </div>
           <div className="mt-10 border-b border-rule">
             {blessings.map((blessing) => (
@@ -114,12 +110,9 @@ export default function Home() {
         <section id="dates" aria-labelledby="dates-heading" className="pt-20 sm:pt-24">
           <div className="max-w-[65ch]">
             <h2 id="dates-heading" className={sectionHeading}>
-              Hanukkah dates
+              {homeCopy.datesHeading}
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              Hanukkah starts on 25 Kislev in the Hebrew calendar, so its date moves each year.
-              Every night begins at sundown.
-            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted">{homeCopy.datesIntro}</p>
           </div>
           {/* Scrolls sideways instead of being clipped when text is enlarged
               (the page hides horizontal overflow). Focusable so keyboard users can scroll it. */}
@@ -179,7 +172,7 @@ export default function Home() {
 
         <section id="faq" aria-labelledby="faq-heading" className="max-w-[65ch] pt-24 sm:pt-32">
           <h2 id="faq-heading" className={sectionHeading}>
-            Questions and answers
+            {homeCopy.faqHeading}
           </h2>
           <div className="mt-8 border-b border-rule">
             {faqs.map((faq) => (

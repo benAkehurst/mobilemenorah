@@ -1,28 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Frank_Ruhl_Libre, IBM_Plex_Sans_Hebrew } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { themeInitScript } from "@/components/theme/theme";
+import { productKeywords } from "@/lib/schema";
 import { appConfig } from "../../app.config";
+import { fontVariables } from "./fonts";
 import "./tokens.css";
 import "./globals.css";
-
-// Display face + all Hebrew (see design.md).
-const display = Frank_Ruhl_Libre({
-  subsets: ["latin", "hebrew"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-// Body + UI.
-const body = IBM_Plex_Sans_Hebrew({
-  subsets: ["latin", "hebrew"],
-  weight: ["400", "600"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(appConfig.appDomainName),
@@ -35,16 +21,15 @@ export const metadata: Metadata = {
   authors: [{ name: appConfig.author.name, url: appConfig.author.url }],
   creator: appConfig.author.name,
   publisher: appConfig.author.name,
+  // Product phrases first (shared with the home page JSON-LD), then variants.
   keywords: [
+    ...productKeywords,
     "virtual menorah",
     "online menorah",
     "digital menorah",
     "Hanukkah",
     "Chanukah",
-    "light the menorah",
     "Hanukkah candles",
-    "Hanukkah blessings",
-    "Hanukkah dates",
     "hanukkiah",
   ],
   category: "religion",
@@ -84,7 +69,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // data-theme is set before paint by themeInitScript, so React's markup won't match it.
-    <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+    <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

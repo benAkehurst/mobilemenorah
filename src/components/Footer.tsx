@@ -23,6 +23,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/contact" className={footLink}>
+                  Contact
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy-policy" className={footLink}>
                   Privacy
                 </Link>
