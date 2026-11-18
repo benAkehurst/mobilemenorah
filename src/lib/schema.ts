@@ -35,6 +35,20 @@ export const websiteSchema = {
   publisher: { "@id": ids.person },
 };
 
+/**
+ * What the product is, in phrases that also appear on the home page. Search
+ * and answer engines (and agent-readiness audits) read these to pair the
+ * brand with its product, e.g. "Mobile Menorah virtual Hanukkah menorah".
+ * Shared with the meta keywords tag in src/app/layout.tsx.
+ */
+export const productKeywords = [
+  "virtual Hanukkah menorah",
+  "Hanukkah menorah online",
+  "how to light the menorah",
+  "Hanukkah blessings",
+  "Hanukkah dates",
+];
+
 export function homeSchema({
   faqs,
   steps,
@@ -55,6 +69,7 @@ export function homeSchema({
         name: appConfig.appName,
         url: `${base}/`,
         description: appConfig.appDescription,
+        keywords: productKeywords.join(", "),
         applicationCategory: "LifestyleApplication",
         operatingSystem: "Any (web browser)",
         browserRequirements: "Requires JavaScript",
@@ -122,7 +137,7 @@ export function pageSchema({
   path: string;
   name: string;
   description: string;
-  type?: "WebPage" | "AboutPage";
+  type?: "WebPage" | "AboutPage" | "ContactPage";
 }) {
   return {
     "@context": "https://schema.org",
@@ -136,6 +151,21 @@ export function pageSchema({
         isPartOf: websiteSchema,
         inLanguage: "en",
         ...(type === "AboutPage" ? { mainEntity: personSchema } : {}),
+        ...(type === "ContactPage"
+          ? {
+              mainEntity: {
+                ...personSchema,
+                email: appConfig.publicEmailAddress,
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "customer support",
+                  email: appConfig.publicEmailAddress,
+                  url: `${base}${path}`,
+                  availableLanguage: "en",
+                },
+              },
+            }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",

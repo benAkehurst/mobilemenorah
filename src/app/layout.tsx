@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { themeInitScript } from "@/components/theme/theme";
+import { productKeywords } from "@/lib/schema";
 import { appConfig } from "../../app.config";
 import "./tokens.css";
 import "./globals.css";
@@ -35,16 +36,15 @@ export const metadata: Metadata = {
   authors: [{ name: appConfig.author.name, url: appConfig.author.url }],
   creator: appConfig.author.name,
   publisher: appConfig.author.name,
+  // Product phrases first (shared with the home page JSON-LD), then variants.
   keywords: [
+    ...productKeywords,
     "virtual menorah",
     "online menorah",
     "digital menorah",
     "Hanukkah",
     "Chanukah",
-    "light the menorah",
     "Hanukkah candles",
-    "Hanukkah blessings",
-    "Hanukkah dates",
     "hanukkiah",
   ],
   category: "religion",

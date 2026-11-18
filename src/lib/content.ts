@@ -50,6 +50,27 @@ export const blessings: Blessing[] = [
   },
 ];
 
+/** Home page copy shared by the HTML page and its Markdown version. */
+export const homeCopy = {
+  heading: "Light a virtual Hanukkah menorah",
+  howToHeading: "How to light the menorah",
+  howToIntro: "Each night, light one more candle than the night before, plus the shamash.",
+  blessingsHeading: "The blessings",
+  blessingsIntro: "Said after lighting the shamash, before lighting the candles.",
+  datesHeading: "Hanukkah dates",
+  datesIntro:
+    "Hanukkah starts on 25 Kislev in the Hebrew calendar, so its date moves each year. Every night begins at sundown.",
+  faqHeading: "Questions and answers",
+};
+
+/** How to use the interactive menorah (for text-only readers). */
+export const usingSteps: string[] = [
+  "Tap the shamash (the raised candle in the middle) to light it.",
+  "Drag the shamash's flame over each candle's wick, or tap the candles, to light them. The shamash returns to its holder when you let go.",
+  "The menorah shows tonight's number of candles automatically during Hanukkah. At other times, choose a night from 1 to 8 to practise.",
+  'Pick a candle colour, or press "Blow out the candles" to start again.',
+];
+
 export type HowToStep = { name: string; text: string };
 
 export const howToSteps: HowToStep[] = [
