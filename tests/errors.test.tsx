@@ -95,8 +95,9 @@ describe("global-error.tsx", () => {
 });
 
 describe("not-found.tsx metadata", () => {
-  it("is noindex and doesn't inherit the home page's canonical or social URL", () => {
-    expect(notFoundMetadata.robots).toEqual({ index: false });
+  it("doesn't inherit the layout's robots tags or the home page's canonical or social URL", () => {
+    // Next.js adds the noindex tag itself for 404s; null just drops "index, follow".
+    expect(notFoundMetadata.robots).toBeNull();
     expect(notFoundMetadata.alternates).toEqual({ canonical: null });
     expect(notFoundMetadata.openGraph).toBeNull();
     expect(notFoundMetadata.twitter).toBeNull();
