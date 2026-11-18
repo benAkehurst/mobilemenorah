@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MenorahMark from "@/components/MenorahMark";
 
+// Next.js sends a 404 status and adds noindex itself. Setting robots here
+// also stops the root layout's "index, follow" (and googlebot) tags being
+// inherited, and the reset canonical/og:url stop the 404 claiming to be the
+// home page.
 export const metadata: Metadata = {
   title: "Page not found",
   robots: { index: false },
+  alternates: { canonical: null },
+  openGraph: null,
+  twitter: null,
 };
 
 export default function NotFound() {
